@@ -490,13 +490,6 @@ function Onboarding() {
                   console.error('Error saving preferences:', err)
                 }
               }
-              // Clear saved plan so new one generates
-const userId = localStorage.getItem('userId')
-if (userId) {
-  const { doc, deleteDoc } = await import('firebase/firestore')
-  const { db } = await import('../firebase')
-  await deleteDoc(doc(db, 'users', userId, 'plans', 'current'))
-}
 navigate('/plan', { state: data })
             } : nextStep}
             className="flex-1 py-3 rounded-xl bg-primary text-white font-semibold text-sm hover:bg-green-600 transition-all"
